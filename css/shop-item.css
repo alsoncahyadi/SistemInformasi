@@ -16,10 +16,6 @@ body {
     padding: 0;
 }
 
-.container {
-	width: auto;
-}
-
 .thumbnail .caption-full {
     padding: 9px;
     color: #333;

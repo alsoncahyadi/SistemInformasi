@@ -32,7 +32,7 @@
 
     <script> 
     $(document).ready(function(){
-       $(".navigation").load("nav-inactive.html");
+       $(".navigation").load("nav-active.html");
     });
     </script> 
 
@@ -41,6 +41,7 @@
 <body>
 
     <div class="navigation"></div>
+    
 
     <!-- Page Content -->
     <div class="container">
@@ -88,7 +89,7 @@
                     <hr>
 
                     <div class="text-right">
-                        <a class="btn btn-success btn-feedback">Beri Masukan</a>
+                        <button class="btn btn-success btn-feedback">Beri Masukan</button>
                     </div>
 
                     <div class="form-group feedback none">
@@ -96,7 +97,7 @@
                             <label for="comment">Komentar</label>
                             <textarea class="form-control input-feedback" rows="5" id="comment" placeholder="Masukkan komentar Anda"></textarea> 
                             <div class="text-right mg-t-10">
-                                <button type="button" class="btn btn-info btn-send">Kirim</button>    
+                                <button type="submit" class="btn btn-info btn-send">Kirim</button>    
                             </div>
                         </form>
                     </div>
