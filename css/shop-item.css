@@ -8,26 +8,31 @@ body {
     padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
 }
 
-.thumbnail img {
+.thumbnail-group img {
     width: 100%;
 }
 
-.thumbnail {
+.thumbnail-group {
     padding: 0;
 }
 
-.thumbnail .caption-full {
+.product-review {
+	margin: 7px;
+	max-width: 350px;
+}
+
+.thumbnail-group .caption-full {
     padding: 9px;
     color: #333;
 }
 
-footer {
-    margin: 50px 0;
+.product-review {
+	border: solid 1px #e0e0e0;
+	border-radius: 5px;
 }
 
-.image {
-	height: 10px;
-	width: auto;
+footer {
+    margin: 50px 0;
 }
 
 .lead {
@@ -43,6 +48,12 @@ footer {
 .loginbox {
 	border: solid #333;
 
+}
+
+.img-auto {
+	width: auto;
+	padding-top: 20px;
+	margin-bottom: 20px;
 }
 
 .user-menu {
