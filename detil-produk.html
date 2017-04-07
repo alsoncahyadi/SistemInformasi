@@ -32,7 +32,7 @@
 
     <script> 
     $(document).ready(function(){
-       $(".navigation").load("nav-inactive.html");
+       $(".navigation").load("nav-active.html");
     });
     </script> 
 
@@ -44,11 +44,12 @@
 
     <!-- Page Content -->
     <div class="container">
+        <div class="col-md-2">
+            <img class="img-responsive" src="http://placehold.it/300x300" alt="image">
+        </div>
         <div class="row">
             <div class="col-md-9">
                 <div class="thumbnail">
-                    <img class="img-responsive image" src="http://placehold.it/800x300" alt="">
-
                     <div class="caption-full">
                         <h4 class="pull-right">Rp50.000</h4>
                         <h3><strong>Beras Pandan Wangi</strong></h3>
@@ -88,7 +89,7 @@
                     <hr>
 
                     <div class="text-right">
-                        <a class="btn btn-success btn-feedback">Beri Masukan</a>
+                        <button class="btn btn-success btn-feedback">Beri Masukan</button>
                     </div>
 
                     <div class="form-group feedback none">
@@ -96,7 +97,7 @@
                             <label for="comment">Komentar</label>
                             <textarea class="form-control input-feedback" rows="5" id="comment" placeholder="Masukkan komentar Anda"></textarea> 
                             <div class="text-right mg-t-10">
-                                <button type="button" class="btn btn-info btn-send">Kirim</button>    
+                                <button type="submit" class="btn btn-info btn-send">Kirim</button>    
                             </div>
                         </form>
                     </div>
@@ -131,10 +132,6 @@
     <script src="js/bootstrap.min.js"></script>
 
     <script>
-        $(".user").click(function(){
-            $(".user-menu").toggle();
-        });
-
         $(".btn-feedback").click(function(){
             $(".feedback").toggle();
             $(".input-feedback").val('');

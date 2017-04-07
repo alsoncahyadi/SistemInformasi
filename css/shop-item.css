@@ -16,10 +16,6 @@ body {
     padding: 0;
 }
 
-.container {
-	width: auto;
-}
-
 .thumbnail .caption-full {
     padding: 9px;
     color: #333;
@@ -59,6 +55,18 @@ footer {
 
 .none {
 	display: none;
+}
+
+.total {
+	font-size: 22px;
+}
+
+div > .radio {
+	margin-top: : 0px;
+}
+
+.payment-option > p {
+	margin-bottom: 0px;
 }
 
 a:hover {
@@ -110,6 +118,10 @@ a:hover {
 
 .mg-t-10 {
 	margin-top: 10px;
+}
+
+.mg-t-20 {
+	margin-top: 20px;
 }
 
 .pd-b-0 {
