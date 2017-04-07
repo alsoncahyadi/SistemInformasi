@@ -44,6 +44,11 @@ footer {
 	font-size: 18px;
 }
 
+.loginbox {
+	border: solid #333;
+
+}
+
 .user-menu {
 	background: #f3f3f3;
 	position: fixed;
