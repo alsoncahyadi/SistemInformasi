@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>E-KKP</title>
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/shop-item.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow" rel="stylesheet">
+
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <script> 
+    $(document).ready(function(){
+       $('.navigation').load("nav-active.html");
+       $('#1').prop('checked', true)
+    });
+    </script> 
+
+</head>
+
+<body>
+
+    <div class="navigation"></div>
+
+    <!-- Page Content -->
+    <div class="container">
+        <div class="col-md-9 payment-option">
+            <p class="total"><strong>ID pembelian: </strong><span>2234567</span></p><br>
+            <p class="total"><strong>Total pembelian: </strong> Rp<span>1.000.000</span></p> <br>
+            <p><strong>Pilih metode pembayaran yang Anda inginkan</strong></p>
+            <form class="option">
+                <div class="radio">
+                    <label><input type="radio" id="1" name="pay-option" value="1">Tunai</label>
+                </div>
+                <div class="radio">
+                    <label><input type="radio" id="2" name="pay-option" value="2">Kredit</label>
+                </div>
+            </form>
+            <div class="col-sm-12 payment-length none">
+                <p><strong>Pilih jumlah pembayaran yang sesuai untuk Anda</strong></p>
+                <form class="length">
+                    <div class="radio">
+                        <label><input type="radio" id="3" name="pay-length" value="3">2 kali pembayaran</label>
+                    </div>
+                    <div class="radio">
+                        <label><input type="radio" id="4" name="pay-length" value="4">4 kali pembayaran</label>
+                    </div>
+                    <div class="radio">
+                        <label><input type="radio" id="5" name="pay-length" value="5">6 kali pembayaran</label>
+                    </div>
+                    <div class="radio">
+                        <label><input type="radio" id="6" name="pay-length" value="6">12 kali pembayaran</label>
+                    </div>
+                </form>
+                <p style="color: grey"><small>Pembayaran dengan menggunakan kredit akan dikenakan biaya tambahan sebesar 5%</small></p>
+                <p style="font-size: 20px;" id="total-credit"></p>
+                <br><br>
+                <!-- <p><strong>Yang harus Anda bayarkan pada setiap pembayaran </strong><span id="total-credit">2234567</span></p><br> -->
+            </div>
+            <br><br>
+            <p><strong>Pembayaran bisa dilakukan langsung saat dilakukan barang diantarkan</strong> oleh staf Waserda. Untuk memastikan keamanan saat melakukan pembayran, tunjukkan ID Anda pada staf yang bersangkutan. Terima kasih atas kepercayaan Anda dengan berbelanja di Waserda KKP-ITB.</p>
+
+            <button class="btn btn-info pull-right mg-t-20">Kirim</button>
+        </div>
+    </div>
+    <!-- /.container -->
+
+    <div class="container">
+        <hr>
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <p>Copyright &copy; K1-05 2017</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <script>
+        $('.option input').on('change', function() {
+            if ($('input[name=pay-option]:checked', '.option').val() == 2 && $(".payment-length").is(':hidden'))
+                $(".payment-length").toggle();
+            else if ($('input[name=pay-option]:checked', '.option').val() == 1 && $(".payment-length").is(':visible'))
+                $(".payment-length").toggle();
+        });
+
+        $('.length input').on('change', function() {
+            var total = 1000000; //nanti ganti pake dapetin dari perhitungan beneran
+            var total2 = Math.round(total/2);
+            var total4 = Math.round(total/4);
+            var total6 = Math.round(total/6);
+            var total12 = Math.round(total/12);
+            if ($('input[name=pay-length]:checked', '.length').val() == 3) {
+                var temp = parseFloat(total2, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1.").toString();
+                $('#total-credit').text("Total yang harus Anda bayarkan pada setiap pembayaran adalah Rp" + temp);
+            } else if ($('input[name=pay-length]:checked', '.length').val() == 4) {
+                var temp = parseFloat(total4, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1.").toString();
+                $('#total-credit').text("Total yang harus Anda bayarkan pada setiap pembayaran adalah Rp" + temp);
+            } else if ($('input[name=pay-length]:checked', '.length').val() == 5) {
+                var temp = parseFloat(total6, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1.").toString();
+                $('#total-credit').text("Total yang harus Anda bayarkan pada setiap pembayaran adalah Rp" + temp);
+            } else if ($('input[name=pay-length]:checked', '.length').val() == 6) {
+                var temp = parseFloat(total12, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1.").toString();
+                $('#total-credit').text("Total yang harus Anda bayarkan pada setiap pembayaran adalah Rp" + temp);
+            }
+        });
+    </script>
+
+</body>
+
+</html>

@@ -52,6 +52,18 @@ footer {
 	display: none;
 }
 
+.total {
+	font-size: 22px;
+}
+
+div > .radio {
+	margin-top: : 0px;
+}
+
+.payment-option > p {
+	margin-bottom: 0px;
+}
+
 a:hover {
 	text-decoration: none;
 }
@@ -101,6 +113,10 @@ a:hover {
 
 .mg-t-10 {
 	margin-top: 10px;
+}
+
+.mg-t-20 {
+	margin-top: 20px;
 }
 
 .pd-b-0 {
