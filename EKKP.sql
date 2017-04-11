@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 11, 2017 at 03:07 PM
+-- Generation Time: Apr 11, 2017 at 05:10 PM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 7.0.13
 
@@ -33,13 +33,6 @@ CREATE TABLE `feedback` (
   `tanggal` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `feedback`
---
-
-INSERT INTO `feedback` (`id_feedback`, `id_produk`, `feedback`, `tanggal`) VALUES
-(1, 1, 'Bagus banget!!! Enak berasnya!!', '2017-04-11 13:04:37');
-
 -- --------------------------------------------------------
 
 --
@@ -53,15 +46,19 @@ CREATE TABLE `produk` (
   `deskripsi` text NOT NULL,
   `berat` int(11) NOT NULL,
   `jumlah` int(11) NOT NULL,
-  `foto` varchar(50) NOT NULL
+  `foto` varchar(50) NOT NULL,
+  `hidden` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `produk`
 --
 
-INSERT INTO `produk` (`id_produk`, `nama`, `harga`, `deskripsi`, `berat`, `jumlah`, `foto`) VALUES
-(1, 'Beras Pandan Wangi', 0, '', 0, 0, '');
+INSERT INTO `produk` (`id_produk`, `nama`, `harga`, `deskripsi`, `berat`, `jumlah`, `foto`, `hidden`) VALUES
+(1, 'Beras Pandan Wangi', 12000, 'Beras pandan wangi asli Bandung', 10, 12, 'img\\Beras-Maknyuss.png', 1),
+(2, 'Panci', 30000, 'Lalala', 1, 100, 'img\\Beras-Maknyuss.png', 0),
+(3, 'Selimut', 30000, 'Lalala', 1, 100, 'img\\Beras-Maknyuss.png', 0),
+(4, 'Sepatu', 30000, 'Lalala', 1, 100, 'img\\Beras-Maknyuss.png', 0);
 
 -- --------------------------------------------------------
 
@@ -102,7 +99,7 @@ CREATE TABLE `transaksi` (
 --
 
 INSERT INTO `transaksi` (`id_transaksi`, `id_user`, `tanggal`, `metodepembayaran`, `total_harga`, `alamat_tujuan`) VALUES
-(1, 1, '2017-04-10', 0, 0, '');
+(1, 1, '2017-04-10', 1, 1000000, 'Cisitu Lama V');
 
 -- --------------------------------------------------------
 
@@ -170,12 +167,12 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `id_feedback` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_feedback` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `transaksi`
 --
