@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>E-KKP</title>
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/shop-item.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow" rel="stylesheet">
+
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <script>
+    $(document).ready(function(){
+       $(".navigation").load("nav-inactive.html");
+    });
+    </script>
+
+</head>
+
+<body>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th, td {
+             padding: 10px;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        th {
+            background: #dddddd;
+            text-align: center;
+        }
+
+
+
+        #cart-page{
+            padding: 0 50px;
+        }
+
+        .align-right {
+            text-align: right;
+        }
+
+        .float-right {
+            float: right;
+        }
+
+        .align-center {
+            text-align: center;
+        }
+
+        input{
+            width: 500px;
+            min-width: 300px;
+            padding: 5px 10px;
+            margin-bottom: 20px;
+        }
+
+        textarea {
+            width: 500px;
+            min-width: 300px;
+            min-height: 100px;
+            padding: 5px 10px;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            margin-left: 15px;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            margin: 20px 0 0 0;
+            background-color: #74f280;
+        }
+
+
+    </style>
+
+    <div class="navigation"></div>
+
+    <?php 
+         require_once ("dbconf.php"); 
+
+        $id_user = $_GET['user'];
+        $id_produk = $_GET['id_produk'];
+
+        $sql = "SELECT * FROM produk WHERE id_produk=$id_produk";    
+        $result = $db->query($sql);
+        
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+        } // else {
+        //     echo "0 results";
+        // }
+    ?>
+
+    <!-- Page Content -->
+    <div class="container">
+        <div class="row" id="cart-page">
+            <h3>Tambah Barang Baru</h3>
+            <div class="col-sm-4">
+                <img id="img-product" src="<?php echo $row["foto"] ?>" width="270px" height="300px">
+            </div>
+            <div class="col-sm-8">
+                <form action="edit-product-func.php?user=<?php echo $id_user; ?>&id_produk=<?php echo $id_produk; ?>" method="post" enctype="multipart/form-data">
+                    <p>Nama Barang :</p>
+                    <input type="text" name="nama" value="<?php echo $row["nama"] ?>">
+                    <p>Harga :</p>
+                    <input type="number" name="harga" value="<?php echo $row["harga"] ?>">
+                    <p>Rincian :</p>
+                    <textarea name="rincian" ><?php echo $row["deskripsi"]?></textarea><br>
+                    <p>Upload Foto Barang :</p>
+                    <input type="file" name="fileToUpload" id="fileToUpload">
+                    <button type="submit" class="btn">Edit produk</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+
+    <script type="text/javascript">
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();            
+                reader.onload = function (e) {
+                    $('#img-product').attr('src', e.target.result);
+                }
+                
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        
+        $("#fileToUpload").change(function(){
+            readURL(this);
+        });
+    </script>
+
+    <div class="container">
+
+        <hr>
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <p>Copyright &copy; K1-05 2017</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <script>
+        $(".user").click(function(){
+            $(".user-menu").toggle();
+        });
+
+        $(".btn-feedback").click(function(){
+            $(".feedback").toggle();
+            $(".input-feedback").val('');
+        });
+
+        $(".btn-send").click(function(){
+            $(".feedback").toggle();
+            $(".input-feedback").val('');
+        });
+    </script>
+
+    <?php $db->close(); ?>
+
+</body>
+
+</html>
