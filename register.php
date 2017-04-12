@@ -60,23 +60,23 @@
                         <form role="form" action="register-action.php" method="post" class="login-form">
                                 <div class="form-group">
                                     <label class="sr-only" for="form-username">Username</label>
-                                    <input type="text" name="form-username" placeholder="Username" class="form-username form-control" id="form-username">
+                                    <input type="text" name="form-username" placeholder="Username" class="form-username form-control" id="form-username" required>
                                 </div>
                                 <div class="form-group">
                                     <label class="sr-only" for="form-password">Password</label>
-                                    <input type="password" name="form-password" placeholder="Password" class="form-password form-control" id="form-password">
+                                    <input type="password" name="form-password" placeholder="Password" class="form-password form-control" id="form-password" required>
                                 </div>
                                 <div class="form-group">
                                     <label class="sr-only" for="form-namalengkap">Nama lengkap</label>
-                                    <input type="text" name="form-namalengkap" placeholder="Nama lengkap" class="form-password form-control" id="form-namalengkap">
+                                    <input type="text" name="form-namalengkap" placeholder="Nama lengkap" class="form-password form-control" id="form-namalengkap" required>
                                 </div>
                                 <div class="form-group">
                                     <label class="sr-only" for="form-email">E-mail</label>
-                                    <input type="email" name="form-email" placeholder="E-mail" class="form-password form-control" id="form-email">
+                                    <input type="email" name="form-email" placeholder="E-mail" class="form-password form-control" id="form-email" required>
                                 </div>
                                 <div class="form-group">
                                     <label class="sr-only" for="form-nomerhp">Nomer HP</label>
-                                    <input type="number" name="form-nomerhp" placeholder="Nomer HP" class="form-password form-control" id="form-nomerhp">
+                                    <input type="number" name="form-nomerhp" placeholder="Nomer HP" class="form-password form-control" id="form-nomerhp" required>
                                 </div>
                                 <button type="submit" class="btn">Daftar</button>
                                 <p style="text-align:right">Sudah punya akun? <a href="login.php">klik disini</a> untuk masuk!</p>
