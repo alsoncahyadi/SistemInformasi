@@ -30,11 +30,11 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <script> 
+    <script>
     $(document).ready(function(){
        $(".navigation").load("nav-inactive.html");
     });
-    </script> 
+    </script>
 
 </head>
 
@@ -49,11 +49,11 @@
         }
 
         table {
-            width: 100%;   
+            width: 100%;
         }
 
         th {
-            background: #dddddd;  
+            background: #dddddd;
             text-align: center;
         }
 
@@ -112,17 +112,17 @@
                 <img src="img/Beras-Maknyuss.png" width="270px" height="300px">
             </div>
             <div class="col-sm-8">
-                <form>
+                <form action="add-product.php" method="post" enctype="multipart/form-data">
                     <p>Nama Barang :</p>
-                    <input type="text">
+                    <input type="text" name="nama">
                     <p>Harga :</p>
-                    <input type="text">
+                    <input type="number" name="harga">
                     <p>Rincian :</p>
-                    <textarea></textarea><br>
+                    <textarea name="rincian"></textarea><br>
+                    <input type="file" name="fileToUpload" id="fileToUpload">
                     <button type="submit" class="btn">Tambah produk</button>
                 </form>
             </div>
-            
         </div>
     </div>
     <!-- /.container -->
