@@ -72,6 +72,10 @@ footer {
 	font-size: 22px;
 }
 
+.block {
+	display: block;
+}
+
 div > .radio {
 	margin-top: : 0px;
 }
@@ -133,6 +137,10 @@ a:hover {
 
 .mg-t-20 {
 	margin-top: 20px;
+}
+
+.mg-l-10 {
+	margin-left: 10px;
 }
 
 .pd-b-0 {

@@ -23,13 +23,12 @@
 </head>
 
 <?php
-require_once ("dbconf.php");
-$sql =  "SELECT * FROM produk;";
-$produks = $db->query($sql);
+    require_once ("dbconf.php");
+    $sql =  "SELECT * FROM produk;";
+    $produks = $db->query($sql);
 ?>
 
 <body>
-
 	<!-- Navigation -->
 	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 		<div class="container">
@@ -67,66 +66,27 @@ $produks = $db->query($sql);
 
 	<!-- Page Content -->
 	<div class="container">
-<!--
-
-        <div class="row">
-            <div class="col-md-3">
-                <p class="lead">Shop Name</p>
-                <div class="list-group">
-                    <a href="#" class="list-group-item">Category 1</a>
-                    <a href="#" class="list-group-item">Category 2</a>
-                    <a href="#" class="list-group-item">Category 3</a>
-                </div>
-            </div>
-
-            <div class="col-md-9">
-
-                <div class="row carousel-holder">
-
-                    <div class="col-md-12">
-                        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                            <ol class="carousel-indicators">
-                                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                            </ol>
-                            <div class="carousel-inner">
-                                <div class="item active">
-                                    <img class="slide-image" src="http://placehold.it/800x300" alt="">
-                                </div>
-                                <div class="item">
-                                    <img class="slide-image" src="http://placehold.it/800x300" alt="">
-                                </div>
-                                <div class="item">
-                                    <img class="slide-image" src="http://placehold.it/800x300" alt="">
-                                </div>
-                            </div>
-                            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-                                <span class="glyphicon glyphicon-chevron-left"></span>
-                            </a>
-                            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-                                <span class="glyphicon glyphicon-chevron-right"></span>
-                            </a>
-                        </div>
-                    </div>
-
-                </div>
-            -->
             <div class="row">
             <?php if ($produks->num_rows > 0) {
             		foreach($produks as $produk) { 
             			foreach($produk as $key => $value) {
             			//echo $key . " => " . $value . "<br>";
-            			}
+            			}    
             			$sql =  "SELECT * FROM feedback WHERE id_produk = " . $produk['id_produk'] . ";";
 						$feedbacks = $db->query($sql);
+
+                        if (isset($_GET['user'])) {
+                            $red = "detil-produk.php?produk=" . $produk['id_produk'] . "&user=" . $_GET['user'];
+                        } else {
+                            $red = "detil-produk.php?produk=" . $produk['id_produk'];
+                        }
             		?>
             	<div class="col-sm-4 col-lg-4 col-md-4 product-review">
             		<img src="<?php echo $produk['foto']?>" alt="" width="100" height="150" class="pull-center center-block img-auto">
             		<div class="thumbnail-group">
             			<div class="caption">
             				<h4 class="pull-right"><?php echo $produk['harga']?></h4>
-            				<h4><a href="#"><?php echo $produk['nama']?></a>
+            				<h4><a href="<?php echo $red?>"><?php echo $produk['nama']?></a>
             				</h4>
             				<p><?php echo $produk['deskripsi']?></p>
             			</div>
@@ -137,32 +97,11 @@ $produks = $db->query($sql);
             	</div>
             <?php }
             } ?>
-            <!-- Contoh Produk -->
-            <!-- 
-            	<div class="col-sm-4 col-lg-4 col-md-4 product-review">
-            		<img src="img/left-arrow.png" alt="" width="100" height="150" class="pull-center center-block img-auto">
-            		<div class="thumbnail-group">
-            			<div class="caption">
-            				<h4 class="pull-right">50.000</h4>
-            				<h4><a href="#">Beras Pandan Wangi</a>
-            				</h4>
-            				<p>Beras pandan wangi adalah beras berkualitas yang diproduksi lokal oleh petani Indonesia. Kualitas beras sudah tidak perlu diragukan lagi. Nasi dijamin pulen!!</p>
-            			</div>
-            			<div class="ratings">
-            				<p class="pull-right">15 feedbacks</p>
-            			</div>
-            		</div>
-            	</div>
-            -->
 
             </div>
 
         </div>
 
-<!--    </div>
-
-</div>-->
-<!-- /.container -->
 
 <div class="container">
 
