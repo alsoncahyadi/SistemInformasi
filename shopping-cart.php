@@ -125,17 +125,18 @@
                         $result = $db->query($sql);
 
                         $total_harga = 0;
-                        $row_produk = "";
                         if ($result->num_rows > 0) {
                             // output data of each row
-                            while($row = $result->fetch_assoc()) {
-                                $row_produk .= "<tr>";
-                                $row_produk .= "<td>" . $row["nama"] . "</td>";
-                                $row_produk .= "<td>" . $row["jumlah"] . "</td>";
-                                $row_produk .= "<td>" . $row["harga"]*$row["jumlah"] . "</td>";
+                            $n = $result->num_rows;
+                            for($i = 0; $i < $n; $i++) {
+                                $row = $result->fetch_assoc();
+                                echo "<tr>";
+                                echo "<td>" . $row["nama"] . "</td>";
+                                echo "<td>" . $row["jumlah"] . "</td>";
+                                echo "<td>" . $row["harga"]*$row["jumlah"] . "</td>";
                                 $total_harga += $row["harga"]*$row["jumlah"]; 
-                                echo $row_produk;
                             }
+                            
                         } // else {
                         //     echo "0 results";
                         // }
@@ -151,7 +152,7 @@
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
                 <p><input type="checkbox"> Saya setuju</p>
-                <button type="submit" class="btn btn-red" onClick="document.location.href='katalog.html?user=<?php echo $_GET['user']; ?>'">Batal</button>
+                <button type="submit" class="btn btn-red" onClick="document.location.href='katalog.php?user=<?php echo $_GET['user']; ?>'">Batal</button>
                 <button type="submit" class="btn" onClick="document.location.href='shopping-cart-func.php?user=<?php echo $_GET['user']; ?>'">Beli</button> 
             </div>
         </div>

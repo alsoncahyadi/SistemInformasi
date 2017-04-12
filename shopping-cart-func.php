@@ -33,7 +33,7 @@
     // }
     $db->close();
 
-    // header("Location:pembayaran-produk.html?user=" . $id_user . "&transaksi=" . $id_transaksi); 
+    header("Location:pembayaran-produk.html?user=" . $id_user . "&transaksi=" . $id_transaksi); 
 
     exit;
 
