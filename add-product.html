@@ -75,7 +75,7 @@
             text-align: center;
         }
 
-        input[type="text"]{
+        input{
             width: 500px;
             min-width: 300px;
             padding: 5px 10px;
@@ -96,6 +96,7 @@
         }
 
         .btn {
+            margin: 20px 0 0 0;
             background-color: #74f280;
         }
 
@@ -109,7 +110,7 @@
         <div class="row" id="cart-page">
             <h3>Tambah Barang Baru</h3>
             <div class="col-sm-4">
-                <img src="img/Beras-Maknyuss.png" width="270px" height="300px">
+                <img id="img-product" src="" width="270px" height="300px">
             </div>
             <div class="col-sm-8">
                 <form action="add-product.php" method="post" enctype="multipart/form-data">
@@ -119,6 +120,7 @@
                     <input type="number" name="harga">
                     <p>Rincian :</p>
                     <textarea name="rincian"></textarea><br>
+                    <p>Upload Foto Barang :</p>
                     <input type="file" name="fileToUpload" id="fileToUpload">
                     <button type="submit" class="btn">Tambah produk</button>
                 </form>
@@ -126,6 +128,23 @@
         </div>
     </div>
     <!-- /.container -->
+
+    <script type="text/javascript">
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();            
+                reader.onload = function (e) {
+                    $('#img-product').attr('src', e.target.result);
+                }
+                
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        
+        $("#fileToUpload").change(function(){
+            readURL(this);
+        });
+    </script>
 
     <div class="container">
 

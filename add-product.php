@@ -63,8 +63,8 @@
         echo "Error: " . $sql . "<br>" . $db->error;
     }
 
-    header("Location:katalog.php?user=" . $id_user); 
-    
+    header("Location:katalog.html?user=" . $id_user); 
+
     exit;
 
 
