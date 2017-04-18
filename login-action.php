@@ -12,7 +12,7 @@ $valid = $stmt->fetch();
 session_start();
 if ($valid) {
     $_SESSION['cId'] = $id_user;
-    header("Location:katalog.php?user=" . $id_user);
+    header("Location:katalog.php");
 } else {
     $_SESSION['loginErrMsg'] = "Login gagal: Username atau password salah";
     header("Location:login.php");

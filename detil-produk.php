@@ -4,8 +4,11 @@
     $id_produk = $_GET['produk'];
     $id_user = "null";
 
-    if(isset($_GET['user'])){
-        $id_user = $_GET['user'];
+    session_start();
+    if (isset($_SESSION['cId'])) {
+        $id_user = $_SESSION['cId'];
+    } else {
+        header('Location:login.php');
     }
 
     $query = "SELECT * FROM produk WHERE id_produk = $id_produk;";    

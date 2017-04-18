@@ -1,6 +1,13 @@
 <?php
     require_once ("dbconf.php");
 
+    session_start();
+    if (isset($_SESSION['cId'])) {
+        $id_user = $_SESSION['cId'];
+    } else {
+        header('Location:login.php');
+    }
+
     $target_dir = "img/";
     $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
     $uploadOk = 1;
@@ -63,7 +70,7 @@
         echo "Error: " . $sql . "<br>" . $db->error;
     }
 
-    header("Location:katalog.php?user=" . $id_user); 
+    header("Location:katalog.php"); 
 
     exit;
 

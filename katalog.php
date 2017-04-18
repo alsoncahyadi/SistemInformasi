@@ -1,3 +1,11 @@
+<?php
+	session_start();
+	if (isset($_SESSION['cId'])) {
+
+	} else {
+		header('Location:login.php');
+	}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -52,10 +60,10 @@
 
 				<ul class="nav navbar-nav pull-right">
 					<li>
-						<a href="#"><span class="glyphicon glyphicon-shopping-cart"></span></a>
+						<a href="shopping-cart.php"><span class="glyphicon glyphicon-shopping-cart"></span></a>
 					</li>
 					<li>
-						<a href="#" class="user"><span class="glyphicon glyphicon-user bg-circle pd-l-3 pd-t-3"></span></a>
+						<a href="logout-action.php" class="user"><p>Logout</p></a>
 					</li>
 				</ul>
 			</div>

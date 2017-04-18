@@ -1,10 +1,16 @@
 <?php 
     require_once ("dbconf.php");
 
-    $id_transaksi = $_GET['transaksi'];
-    $id_user = $_GET['user'];
+    session_start();
+    if (isset($_SESSION['cId'])) {
+        $id_user = $_SESSION['cId'];
+    } else {
+        header('Location:login.php');
+    }
 
-    $query = "SELECT * FROM produkdalamtransaksi WHERE id_transaksi = $id_transaksi;";
+    $id_transaksi = $_GET['transaksi'];
+
+    $query = "SELECT * FROM cartitem WHERE id_user=$id_user;";
     $result = mysqli_query($db, $query);
     $products_transaction = array();    
     while ($row = mysqli_fetch_assoc($result)) {         
@@ -221,7 +227,7 @@
                 method = method2;
             }
 
-            location.href = "insert-transaction.php?user=" + user + "&total=" + total + "&alamat=" + alamat.value + "&metode=" + method + "&transaksi=" + transaksi;
+            location.href = "insert-transaction.php?&total=" + total + "&alamat=" + alamat.value + "&metode=" + method + "&transaksi=" + transaksi;
         };
     </script>
 
