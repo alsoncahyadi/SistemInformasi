@@ -108,7 +108,13 @@
     <?php 
          require_once ("dbconf.php"); 
 
-        $id_user = $_GET['user'];
+        session_start();
+        if (isset($_SESSION['cId'])) {
+            $id_user = $_SESSION['cId'];
+        } else {
+            header('Location:login.php');
+        }
+
         $id_produk = $_GET['id_produk'];
 
         $sql = "SELECT * FROM produk WHERE id_produk=$id_produk";    

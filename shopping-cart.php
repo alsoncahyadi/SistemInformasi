@@ -1,3 +1,11 @@
+<?php
+    session_start();
+    if (isset($_SESSION['cId'])) {
+        $id_user = $_SESSION['cId'];
+    } else {
+        header('Location:login.php');
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,7 +40,7 @@
 
     <script> 
     $(document).ready(function(){
-       $(".navigation").load("nav-inactive.html");
+       $(".navigation").load("nav-active.html");
     });
     </script> 
 
@@ -117,7 +125,7 @@
                     <?php
                         require_once ("dbconf.php"); 
 
-                        $id_user = $_GET['user'];
+                        //$id_user = $_GET['user'];
 
                         $sql = "SELECT DISTINCT nama, harga, cartitem.jumlah FROM cartitem INNER JOIN produk ON cartitem.id_produk=produk.id_produk WHERE id_user=$id_user";
                         
@@ -152,8 +160,8 @@
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
                 <p><input type="checkbox"> Saya setuju</p>
-                <button type="submit" class="btn btn-red" onClick="document.location.href='katalog.php?user=<?php echo $_GET['user']; ?>'">Batal</button>
-                <button type="submit" class="btn" onClick="document.location.href='shopping-cart-func.php?user=<?php echo $_GET['user']; ?>'">Beli</button> 
+                <button type="submit" class="btn btn-red" onClick="document.location.href='katalog.php'">Batal</button>
+                <button type="submit" class="btn" onClick="document.location.href='shopping-cart-func.php'">Beli</button> 
             </div>
         </div>
     </div>

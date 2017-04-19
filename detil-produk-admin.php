@@ -1,8 +1,13 @@
 <?php
     require_once ("dbconf.php");
     //$user = $_GET['user'];
+    session_start();
+    if (isset($_SESSION['cId'])) {
+        $id_user = $_SESSION['cId'];
+    } else {
+        header('Location:login.php');
+    }
     $id_produk = $_GET['produk'];
-    $id_user = $_GET['user'];
 
     $query = "SELECT * FROM produk WHERE id_produk = $id_produk;";    
     $result = mysqli_query($db, $query);

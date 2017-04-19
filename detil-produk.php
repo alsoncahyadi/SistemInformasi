@@ -2,7 +2,14 @@
     require_once ("dbconf.php");
     //$user = $_GET['user'];
     $id_produk = $_GET['produk'];
-    $id_user = $_GET['user'];
+    $id_user = "null";
+
+    session_start();
+    if (isset($_SESSION['cId'])) {
+        $id_user = $_SESSION['cId'];
+    } else {
+        header('Location:login.php');
+    }
 
     $query = "SELECT * FROM produk WHERE id_produk = $id_produk;";    
     $result = mysqli_query($db, $query);
@@ -41,8 +48,18 @@
 
     <script> 
     $(document).ready(function(){
-       $(".navigation").load("nav-active.html");
+        var user = "";
+        user = <?php echo $id_user; ?>;
+
+        if (user == null) {
+            $(".navigation").load("nav-inactive.html");
+            $("#gate").prop("disabled",true);
+        } else {
+            $(".navigation").load("nav-active.html");
+        }
+       
     });
+    
     </script> 
 
 </head>
@@ -106,7 +123,7 @@
                     ?>
 
                     <div class="text-right">
-                        <button class="btn btn-success btn-feedback">Beri Masukan</button>
+                        <button class="btn btn-success btn-feedback" id="gate">Beri Masukan</button>
                     </div>
 
                     <div class="form-group feedback none">
@@ -149,8 +166,15 @@
         });
 
         $("#buy").click(function(){
-            $("#pembelian").toggle();
-            $("#buy").toggle();
+            var usr = "";
+            usr = <?php echo $id_user; ?>;
+
+            if (usr == null) {
+                location.href = "login.php";
+            } else {
+                $("#pembelian").toggle();
+                $("#buy").toggle();
+            }
         });
 
         function toBuy(produk, user) {
@@ -160,7 +184,7 @@
         
         function toComment(produk, user) {
             var jumlah = document.getElementById('comment');
-            location.href = "insert-feedback.php?produk=" + id + "&comment=" + comment.value + "&user=" + user;
+            location.href = "insert-feedback.php?produk=" + produk + "&comment=" + comment.value + "&user=" + user;
         }; 
 
     </script>
