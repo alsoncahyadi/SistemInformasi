@@ -1,9 +1,9 @@
 <?php
 	session_start();
 	if (isset($_SESSION['cId'])) {
-
+		$id_user = $_SESSION['cId'];
 	} else {
-		header('Location:login.php');
+		//header('Location:login.php');
 	}
 ?>
 <!DOCTYPE html>
@@ -59,6 +59,12 @@
 				</ul>
 
 				<ul class="nav navbar-nav pull-right">
+					<?php
+					if ($id_user == 1) {
+					echo "<li>";
+					echo "	<a href='add-product.html'><p>Add Produk</p></a>";
+					echo "</li>";
+					}?>
 					<li>
 						<a href="shopping-cart.php"><span class="glyphicon glyphicon-shopping-cart"></span></a>
 					</li>
@@ -88,6 +94,7 @@
                         } else {
                             $red = "detil-produk.php?produk=" . $produk['id_produk'];
                         }
+                        if ($produk['hidden'] == 0) {
             		?>
             	<div class="col-sm-4 col-lg-4 col-md-4 product-review">
             		<img src="<?php echo $produk['foto']?>" alt="" width="100" height="150" class="pull-center center-block img-auto">
@@ -103,7 +110,7 @@
             			</div>
             		</div>
             	</div>
-            <?php }
+            <?php }}
             } ?>
 
             </div>

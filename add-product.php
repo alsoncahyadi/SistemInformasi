@@ -62,7 +62,7 @@
         die("Connection failed: " . $db->connect_error);
     } 
 
-    $sql =  "INSERT INTO produk(nama, harga, deskripsi, foto, berat, jumlah) VALUES ('$nama', $harga, '$rincian', '$path', 1, 100);";
+    $sql =  "INSERT INTO produk(nama, harga, deskripsi, foto, berat, jumlah, hidden) VALUES ('$nama', $harga, '$rincian', '$path', 1, 100,0);";
 
     if ($db->query($sql) === TRUE) {
         echo "New record created successfully";

@@ -115,7 +115,7 @@
             header('Location:login.php');
         }
 
-        $id_produk = $_GET['id_produk'];
+        $id_produk = $_GET['produk'];
 
         $sql = "SELECT * FROM produk WHERE id_produk=$id_produk";    
         $result = $db->query($sql);
@@ -130,7 +130,7 @@
     <!-- Page Content -->
     <div class="container">
         <div class="row" id="cart-page">
-            <h3>Tambah Barang Baru</h3>
+            <h3>Ubah Barang</h3>
             <div class="col-sm-4">
                 <img id="img-product" src="<?php echo $row["foto"] ?>" width="270px" height="300px">
             </div>

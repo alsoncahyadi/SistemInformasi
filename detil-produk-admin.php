@@ -77,7 +77,7 @@
                     <br><br>
 
                     <div class="text-right">
-                        <a onclick="toDelete('<?php echo $id_produk;?>', '<?php echo $item['nama'];?>', '<?php echo $id_user;?>)';" class="btn btn-danger mg-r-10 mg-b-20">Hapus Barang</a>
+                        <a onclick="toDelete('<?php echo $id_produk;?>', '<?php echo $item['nama'];?>', '<?php echo $id_user;?>');" class="btn btn-danger mg-r-10 mg-b-20">Hapus Barang</a>
                         <a onclick="toEdit('<?php echo $id_produk;?>', '<?php echo $id_user;?>');" class="btn btn-warning mg-r-10 mg-b-20">Edit Barang</a>
                     </div>
 

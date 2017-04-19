@@ -11,6 +11,10 @@
         header('Location:login.php');
     }
 
+    if($id_user == 1) {
+        header('Location:detil-produk-admin.php?produk='.$id_produk);
+    }
+
     $query = "SELECT * FROM produk WHERE id_produk = $id_produk;";    
     $result = mysqli_query($db, $query);
     $item = $result->fetch_assoc();
